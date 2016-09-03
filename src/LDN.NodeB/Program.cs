@@ -9,7 +9,7 @@
     {
         static void Main(string[] args)
         {
-            var bus = Bus.Factory.CreateUsingRabbitMq(
+            /* var bus =*/ Bus.Factory.CreateUsingRabbitMq(
                   rmq =>
                   {
                       var host = rmq.Host(new Uri("rabbitmq://127.0.0.1/ldn"), s =>

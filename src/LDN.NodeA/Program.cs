@@ -4,12 +4,12 @@
     using System.Threading.Tasks;
     using MassTransit;
     using Messages;
-    
+
     class Program
     {
         static void Main(string[] args)
         {
-            var bus = Bus.Factory.CreateUsingRabbitMq(
+            /* var bus =*/ Bus.Factory.CreateUsingRabbitMq(
                   rmq =>
                   {
                       var host = rmq.Host(new Uri("rabbitmq://127.0.0.1"), s =>
