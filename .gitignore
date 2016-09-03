@@ -1,5 +1,10 @@
 /packages
-bin
-obj
 *.suo
 *.user
+/out
+obj/
+debian/debhelper-build-stamp
+debian/files
+debian/ldn.debhelper.log
+debian/ldn.substvars
+debian/ldn/
