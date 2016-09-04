@@ -10,7 +10,7 @@
 	{
 		public static void Main (string[] args)
 		{
-			var packageList = Path.GetFullPath ("../../packages.config");// Path.GetFullPath (args [0]);
+			var packageList = Path.GetFullPath (args [0]);
 			var repoAddress = args.Length > 1 ? args [1] : "https://www.nuget.org/api/v2/";
 			var repo = PackageRepositoryFactory.Default.CreateRepository (repoAddress);
 			var packages = XDocument.Load (new FileStream (packageList, FileMode.Open)).Root.Elements("package");
