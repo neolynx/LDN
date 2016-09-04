@@ -1,9 +1,7 @@
 ﻿namespace LDN.NodeA
 {
     using System;
-    using System.Threading.Tasks;
     using MassTransit;
-    using Messages;
 
     class Program
     {
@@ -26,14 +24,6 @@
                               h.Consumer<MessageConsumer>();
                           });
                   });
-        }
-    }
-
-    internal class MessageConsumer : IConsumer<DemoMessage>
-    {
-        public Task Consume(ConsumeContext<DemoMessage> context)
-        {
-            return Task.CompletedTask;
         }
     }
 }
