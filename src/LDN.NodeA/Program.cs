@@ -3,6 +3,7 @@
     using System;
     using System.Threading;
     using MassTransit;
+    using Messages;
 
     class Program
     {
@@ -11,7 +12,7 @@
             var bus = Bus.Factory.CreateUsingRabbitMq(
                  rmq =>
                  {
-                     var host = rmq.Host(new Uri("rabbitmq://127.0.0.1"), s =>
+                     var host = rmq.Host(new Uri("rabbitmq://localhost/ldn"), s =>
                      {
                          s.Password("ldn");
                          s.Username("ldn");
@@ -26,11 +27,13 @@
                          });
                  });
             bus.Start();
-            var semaphore = new SemaphoreSlim(1);
+            var semaphore = new ManualResetEventSlim(false);
             Console.CancelKeyPress += (_, __) =>
             {
-                semaphore.Release();
+                semaphore.Set();
             };
+
+            bus.Publish(new DemoMessage { Content = 1 });
             semaphore.Wait();
 
             semaphore.Dispose();

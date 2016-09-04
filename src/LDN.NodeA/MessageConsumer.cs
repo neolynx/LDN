@@ -1,5 +1,6 @@
 ﻿namespace LDN.NodeA
 {
+    using System;
     using System.Threading.Tasks;
     using MassTransit;
     using Messages;
@@ -8,9 +9,14 @@
     {
         public Task Consume(ConsumeContext<DemoMessage> context)
         {
-            var content = context.Message.Content + 1;
-            var message = new DemoMessage { Content = content };
-            return context.Publish(message);
+            Console.WriteLine("Received content: " + context.Message.Content);
+            if (context.Message.Content % 2 == 0)
+            {
+                var content = context.Message.Content + 1;
+                var message = new DemoMessage { Content = content };
+                return context.Publish(message);
+            }
+            return Task.CompletedTask;
         }
     }
 }

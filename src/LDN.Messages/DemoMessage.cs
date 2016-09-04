@@ -2,6 +2,6 @@
 {
     public class DemoMessage
     {
-        public string Content { get; set; }
+        public int Content { get; set; }
     }
 }
