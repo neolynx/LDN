@@ -2,7 +2,8 @@
 *.suo
 *.user
 /out
-obj/
+[Oo]bj
+[Bb]in
 debian/debhelper-build-stamp
 debian/files
 debian/ldn.debhelper.log
